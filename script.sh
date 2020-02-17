@@ -1,6 +1,14 @@
 #!/bin/bash
 echo Hello All!
 
-тут могла бы быть ваша реклама
+dir=/home/useradmin/test
 
-echo Привет от студента Антонова А.!
+mkdir -p $dir/20{15..20}/{1..12}
+touch $dir/20{15..20}/{1..12}/{001..003}.txt
+
+echo -e {001..003} >> $dir/20{15..20}/{1..12}/{001..003}.txt
+find $dir -name '.txt' -type f |
+while read f
+do
+echo ${f##/} | sed 's/.[^.]*$//' > $f
+done
